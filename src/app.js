@@ -9,6 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express()
+const port = process.env.PORT || 3000
 //Define paths
 const viewspath = path.join(__dirname,'../templates/views')
 const publicDirectoryPath = path.join(__dirname,'../public')
@@ -16,7 +17,7 @@ const partialsPath = path.join(__dirname,'../templates/partials')
 
 // setup handle bars and view location 
 app.set('view engine','hbs')
-app.set('views',viewspath)
+app.set('views',viewspath) 
 hbs.registerPartials(partialsPath)
 
 app.use(express.static(publicDirectoryPath))
@@ -109,6 +110,6 @@ app.get('*',(req,res)=>{
     })
 })
 
-app.listen(3000, () => {
-    console.log('server is up on 3000')
+app.listen(port, () => {
+    console.log('server is up on ' + port)
 })
