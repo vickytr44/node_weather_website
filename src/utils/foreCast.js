@@ -17,7 +17,9 @@ const forecast =(latitude,longitude, callback) =>{
             else
             {
                 callback(undefined,{
-                    foreCast: "It is "+ body.current.weather_descriptions + ". The temp is " + body.current.temperature + " but it feels like " + body.current.feelslike
+                    foreCast: "It is "+ body.current.weather_descriptions + ". The temp is " + body.current.temperature + " fahrenheit but it feels like " + body.current.feelslike + " fahrenheit",
+                    pressure: "pressure: " + body.current.pressure,
+                    observation_time:"observation time: "+ body.current.observation_time
                 } )
             }
     })

@@ -2,6 +2,8 @@ const weatherform = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message_1')
 const messageTwo = document.querySelector('#message_2')
+const messageThree = document.querySelector('#message_3')
+const messageFour = document.querySelector('#message_4')
 
 
 weatherform.addEventListener('submit',(e)=> {
@@ -11,6 +13,8 @@ weatherform.addEventListener('submit',(e)=> {
 
     messageOne.textContent = 'Loading..'
     messageTwo.textContent = ''
+    messageThree.textContent = ''
+    messageFour.textContent = ''
 
     fetch('/weather?address='+ location).then((response) => {
         response.json().then((data)=>{
@@ -19,8 +23,10 @@ weatherform.addEventListener('submit',(e)=> {
                 messageOne.textContent = data.error
             }
             else{
-                messageOne.textContent = location
+                messageOne.textContent = data.location
                 messageTwo.textContent = data.foreCast
+                messageThree.textContent = data.weatherIcon
+                messageFour.textContent = data.observation_time
             }            
         })
     })

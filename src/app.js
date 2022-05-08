@@ -63,7 +63,7 @@ app.get('/weather',(req,res) => {
         }
 
         //console.log(location)
-        foreCast.foreCast(latitude, longitude, (forecasterror, {foreCast} = {}) =>{
+        foreCast.foreCast(latitude, longitude, (forecasterror, {foreCast,pressure,observation_time} = {}) =>{
             if(forecasterror)
             {
                 return res.send({
@@ -74,8 +74,8 @@ app.get('/weather',(req,res) => {
             res.send({                
                 foreCast,
                 location,
-                address: req.query.address
-
+                pressure,
+                observation_time
             })
             
         })
